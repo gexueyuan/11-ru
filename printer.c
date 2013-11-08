@@ -515,11 +515,11 @@ void Print_Table_Text_YIQIHAO()
 
     BCD_to_ASCII(Table_TestRecord,4,n_Offset_JILUHAO,0);
 
-    Table_TestRecord[8]= 0x0d;
+    Table_TestRecord[8-2]= 0x0d;
     
     CopyXCHARtoCHAR(&PrintDataBuff[Datanum],Table_TestRecord,9);//30-57
 
-	Datanum = Datanum+9; 
+	Datanum = Datanum+9-2; 
 
 
 }

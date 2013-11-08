@@ -5089,7 +5089,7 @@ XCHAR CoName[] = {0x002E, 0x002E, 0x002E, 0x0033, 0x00A0, 0x0020, 0x00B2, 0x00B0
 XCHAR Alcovisor[] ={'A','L','C','O','V','I','S','O','R',0x0000};
 XCHAR Model[] = {'P','R','O','-','1','0','0',' ','t','o','u','c','h','-','M',0};//"ALCOVISOR@";
 //XCHAR edition[] = {'1','2','0','3','7','0',0,0,0,0,0,0,0};
-XCHAR edition[] = {'R','U',0x0020,'V','1','.','1','1',0,0,0};//{0x43,0x4e,0x20,0x56,0x31,0x2e,0x30,0x30,0x00};//"CN V1.00"; //edition
+XCHAR edition[] = {'R','U',0x0020,'V','1','.','1','2',0,0,0};//{0x43,0x4e,0x20,0x56,0x31,0x2e,0x30,0x30,0x00};//"CN V1.00"; //edition
 XCHAR PeriodsText[] = {'P','l','e','a','s','e',' ','D','e','m','a','r','c','a','t','e',0};
 
 #ifdef Bluetooth
@@ -10204,36 +10204,37 @@ BYTE  IDvalue[4]={0};
     // for(i=0;i<8;i++)
         //Tempbuffchar[i] = (unsigned char)TempbuffStr[i];
      
-    if((TempbuffStr[0]!=0)&&(TempbuffStr[7]!=0))
+    if((TempbuffStr[0]!=0)&&(TempbuffStr[5]!=0))
     	{
            j = 0;
-        for(i=0;i<4;i++)
-        	{  
+		for(i=0;i<3;i++)
+			{  
                 IDvalue[i]=(TempbuffStr[j]-'0')&0x0F;
-        	  
-                IDvalue[i]=IDvalue[i]<<4;
-    		
+			  
+			    IDvalue[i]=IDvalue[i]<<4;
+			
 
-                IDvalue[i]=IDvalue[i]|((TempbuffStr[1+j]-'0')&0x0F);
+			    IDvalue[i]=IDvalue[i]|((TempbuffStr[1+j]-'0')&0x0F);
 
 
-              j=j+2;
+			  j=j+2;
 
-    		}
+			}
 
-    	
+		
             for(i=0;i<9;i++)
-                TempbuffStr[i] = 0;
-    
-        if(screenState==DISPLAY_EDITID)
-    		{
-            EEPROMWriteByte(IDvalue[0], ID_JIQIADDRESS);
-            EEPROMWriteByte(IDvalue[1], ID_JIQIADDRESS+1);
-            EEPROMWriteByte(IDvalue[2], ID_JIQIADDRESS+2);
-            EEPROMWriteByte(IDvalue[3], ID_JIQIADDRESS+3);
+			    TempbuffStr[i] = 0;
+	
+		if(screenState==DISPLAY_EDITID)
+			{
+			EEPROMWriteByte(IDvalue[0], ID_JIQIADDRESS);
+			EEPROMWriteByte(IDvalue[1], ID_JIQIADDRESS+1);
+			EEPROMWriteByte(IDvalue[2], ID_JIQIADDRESS+2);
+			//EEPROMWriteByte(IDvalue[3], ID_JIQIADDRESS+3);
 
-    	}
-             screenState = CREATE_DISPLAYID;    // goto list box screen            
+		}
+
+			 screenState = CREATE_DISPLAYID; 	// goto list box screen            
             }
         case ID_BUTTON_BACK:
             if(objMsg == BTN_MSG_RELEASED){
@@ -10262,7 +10263,7 @@ Nop();
 j=j+2;
 //IDumberStr[6]=0;
 }
-IDumberStr[8]=0;
+IDumberStr[6]=0;
 GOLFree();   // free memory for the objects in the previous linked list and start new list
 
     CreatePage(EditIDstr);  // CreatePage("Setting");
@@ -10271,7 +10272,7 @@ GOLFree();   // free memory for the objects in the previous linked list and star
               MAINSTARTX+0*(MAINCHARSIZE+MAINSIZEX),MAINSTARTY+10,
               MAINSTARTX+1*MAINCHARSIZE,MAINSTARTY+1*MAINCHARSIZE+10,               // dimension
               0,                       	// set radius 
-              BTN_DRAW|BTN_DISABLED,                // draw a beveled button
+              BTN_DRAW,//|BTN_DISABLED,                // draw a beveled button
               NULL,//(void*)&Pictest,                       // no bitmap
               EditIDstr,//ButtonStr,                // "Button",     	// text
               alt4Scheme);                  
