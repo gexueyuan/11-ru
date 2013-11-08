@@ -1498,11 +1498,11 @@ unsigned char  Initialee[20]={0};
 EEPROMWriteByte(1, RButtonAddress); 
 EEPROMWriteWord(120, BackLightTimeAddress);//power off
 
-EEPROMWriteByte(ID_RADIOBUTTONStar + 38, BlowTimeAddress);
-EEPROMWriteWord(70, BlowTimeDataAddress);//time
+EEPROMWriteByte(ID_RADIOBUTTONStar + 39, BlowTimeAddress);
+EEPROMWriteWord(80, BlowTimeDataAddress);//time
 
-EEPROMWriteByte(ID_RADIOBUTTONStar + 46, BlowPressAddress);
-EEPROMWriteWord(230, BlowPressDataAddress);//press
+EEPROMWriteByte(ID_RADIOBUTTONStar + 43, BlowPressAddress);
+EEPROMWriteWord(170, BlowPressDataAddress);//press
 
 EEPROMWriteByte(8, ThicknessAddress);//Unit
 
@@ -2072,10 +2072,10 @@ if(0x33!=EEPROMReadByte(updateVision))
 //	serialnumberRecord=1;//
     memset(&Flashbuff[0],0,256);
     POWER_CONTROL = 1;  //Power On
-#if 1/*开机温度范围 -5度到50度*/
+#if 1/*开机温度范围 0度到40度*/
      Tem_Detect = Adc_Count(7,5);
 
-    if(Tem_Detect<=0x0088)
+    if(Tem_Detect<=0x009b)
     {
       SetColor(BLACK);
       ClearDevice();
@@ -2089,7 +2089,7 @@ if(0x33!=EEPROMReadByte(updateVision))
     	}
 
 
-    else if(Tem_Detect>=0x0139)
+    else if(Tem_Detect>=0x0117)
     	{
           SetColor(BLACK);
           ClearDevice();
@@ -5079,7 +5079,7 @@ case DISPLAY_AllSet:
 }
 
 
-XCHAR SoftwareID[] = {'V',':',' ','1','0','9','1','3','0','4','2','5',0};
+XCHAR SoftwareID[] = {'V',':',' ','1','1','2','1','3','1','1','0','8',0};
 /*1.07 13.04.12*/
 // Shows intro screen and waits for touch
 void StartScreen(void){
