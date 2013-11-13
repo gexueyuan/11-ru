@@ -48,8 +48,9 @@
  * Jayanth Murthy       06/25/09    dsPIC & PIC24H support 
  * Anton Alkhimenok     06/26/09    16-bit PMP support
  *****************************************************************************/
-#ifdef SPFD5408B
+
 #include "Graphics.h"
+#ifdef SPFD5408B
 
 #define DelayForSync() do {\
 							Nop(); Nop(); Nop(); Nop();\
