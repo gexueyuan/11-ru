@@ -504,6 +504,8 @@ void CreateAgent(void);
 WORD MsgAgent(WORD objMsg, OBJ_HEADER* pObj);
 void CreateMaster(void);
 WORD MsgMaster(WORD objMsg, OBJ_HEADER* pObj);
+void CreateFieldSetting(void);
+WORD MsgFieldSetting(WORD objMsg, OBJ_HEADER* pObj);
 void CreateSetpassword(void);
 WORD MsgSetpassword(WORD objMsg, OBJ_HEADER* pObj);
 WORD MsgEditPassword(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg);
@@ -3279,6 +3281,8 @@ return MsgEditABC(objMsg, pObj, pMsg);
             return MsgAgent(objMsg, pObj);
         case DISPLAY_Master:
             return MsgMaster(objMsg, pObj);
+	case DISPLAY_FieldSet:
+	     return MsgFieldSetting(objMsg, pObj);
         case DISPLAY_Setpassword:
             return MsgSetpassword(objMsg, pObj);
         case DISPLAY_InputSetpassword1:
@@ -3649,70 +3653,60 @@ static  BYTE offnum=0;
 #ifdef USE_ITEM
         if((ItemID == ID_STATICTEXT10))
     	{	
-//          CreateEditTest(Item0Str,ItemMax);
             CreateEditABC(Item0Str,ItemMax);
             ItemID = ID_STATICTEXT10;
             screenState = DISPLAY_ITEM;
     	}
         else if((ItemID == ID_STATICTEXT11))
     	{
-//          CreateEditTest(Item1Str,ItemMax);
             CreateEditABC(Item1Str,ItemMax);
             ItemID = ID_STATICTEXT11;
             screenState = DISPLAY_ITEM;
         	}
         else if((ItemID == ID_STATICTEXT12))
     	{	
-//          CreateEditTest(Item2Str,ItemMax);
             CreateEditABC(Item2Str,ItemMax);
             ItemID = ID_STATICTEXT12;
             screenState = DISPLAY_ITEM;
     	}
         else if((ItemID == ID_STATICTEXT13))
     	{
-//          CreateEditTest(Item3Str,ItemMax);
             CreateEditABC(Item3Str,ItemMax);
             ItemID = ID_STATICTEXT13;
             screenState = DISPLAY_ITEM;
         	}
         else if((ItemID == ID_STATICTEXT14))
     	{	
-//          CreateEditTest(Item4Str,ItemMax);
             CreateEditABC(Item4Str,ItemMax);
             ItemID = ID_STATICTEXT14;
             screenState = DISPLAY_ITEM;
     	}
         else if((ItemID == ID_STATICTEXT15))
     	{
-//          CreateEditTest(Item5Str,ItemMax);
             CreateEditABC(Item5Str,ItemMax);
             ItemID = ID_STATICTEXT15;
             screenState = DISPLAY_ITEM;
         	}
         else if((ItemID == ID_STATICTEXT16))
     	{	
-//          CreateEditTest(Item6Str,ItemMax);
             CreateEditABC(Item6Str,ItemMax);
             ItemID = ID_STATICTEXT16;
             screenState = DISPLAY_ITEM;
     	}
         else if((ItemID == ID_STATICTEXT17))
     	{
-//          CreateEditTest(Item7Str,ItemMax);
             CreateEditABC(Item7Str,ItemMax);
             ItemID = ID_STATICTEXT17;
             screenState = DISPLAY_ITEM;
         	}
         else if((ItemID == ID_STATICTEXT18))
     	{	
-//          CreateEditTest(Item8Str,ItemMax);
             CreateEditABC(Item8Str,ItemMax);
             ItemID = ID_STATICTEXT18;
             screenState = DISPLAY_ITEM;
     	}
         else if((ItemID == ID_STATICTEXT19))
     	{
-//          CreateEditTest(Item9Str,ItemMax);
             CreateEditABC(Item9Str,ItemMax);
             ItemID = ID_STATICTEXT19;
             screenState = DISPLAY_ITEM;
@@ -4782,7 +4776,6 @@ while(S4_count <30){    // 等待放开
 
     case CREATE_ITEM0:
 #ifdef USE_ITEM
-//      CreateItem();
         CreateEditABC(Item0Str,ItemMax);
         screenState = DISPLAY_ITEM0;
 #endif
@@ -4792,7 +4785,6 @@ while(S4_count <30){    // 等待放开
 
     case CREATE_ITEM1:
 #ifdef USE_ITEM
-//      CreateItem();
         CreateEditABC(Item1Str,ItemMax);
         screenState = DISPLAY_ITEM1;
 #endif
@@ -4802,7 +4794,6 @@ while(S4_count <30){    // 等待放开
 
     case CREATE_ITEM2:
 #ifdef USE_ITEM
-//      CreateItem();
         CreateEditABC(Item2Str,ItemMax);
         screenState = DISPLAY_ITEM2;
 #endif
@@ -4812,7 +4803,6 @@ while(S4_count <30){    // 等待放开
 
     case CREATE_ITEM3:
 #ifdef USE_ITEM
-//      CreateItem();
         CreateEditABC(Item3Str,ItemMax);
         screenState = DISPLAY_ITEM3;
 #endif
@@ -4822,7 +4812,6 @@ while(S4_count <30){    // 等待放开
     	
     case CREATE_ITEM4:
 #ifdef USE_ITEM
-//      CreateItem();
         CreateEditABC(Item4Str,ItemMax);
         screenState = DISPLAY_ITEM4;
 #endif
@@ -4832,7 +4821,6 @@ while(S4_count <30){    // 等待放开
 
     case CREATE_ITEM5:
 #ifdef USE_ITEM
-//      CreateItem();
         CreateEditABC(Item5Str,ItemMax);
         screenState = DISPLAY_ITEM5;
 #endif
@@ -4842,7 +4830,6 @@ while(S4_count <30){    // 等待放开
 
     case CREATE_ITEM6:
 #ifdef USE_ITEM
-//      CreateItem();
         CreateEditABC(Item6Str,ItemMax);
         screenState = DISPLAY_ITEM6;
 #endif
@@ -4852,7 +4839,6 @@ while(S4_count <30){    // 等待放开
 
     case CREATE_ITEM7:
 #ifdef USE_ITEM
-//      CreateItem();
         CreateEditABC(Item7Str,ItemMax);
         screenState = DISPLAY_ITEM7;
 #endif
@@ -4862,7 +4848,6 @@ while(S4_count <30){    // 等待放开
 
     case CREATE_ITEM8:
 #ifdef USE_ITEM
-//      CreateItem();
         CreateEditABC(Item8Str,ItemMax);
         screenState = DISPLAY_ITEM8;
 #endif
@@ -4872,7 +4857,6 @@ while(S4_count <30){    // 等待放开
 
     case CREATE_ITEM9:
 #ifdef USE_ITEM
-//      CreateItem();
         CreateEditABC(Item9Str,ItemMax);
         screenState = DISPLAY_ITEM9;
 #endif
@@ -4892,7 +4876,15 @@ while(S4_count <30){    // 等待放开
         return 1;
     case DISPLAY_Master:
         return 1;
-    	
+
+    case CREATE_FieldSet:
+        CreateFieldSetting();
+        screenState = DISPLAY_FieldSet;
+        return 1;
+    case DISPLAY_FieldSet:
+        return 1;
+
+		
     case CREATE_Setpassword:
         CreateSetpassword();
         screenState = DISPLAY_Setpassword;
@@ -5001,7 +4993,7 @@ while(S4_count <30){    // 等待放开
             offcount = 0;
             AutooffSwitch = TRUE;
     		}
-        if(ADS7843_INT!=1)
+        if((ADS7843_INT!=1)||(!BTN_S6)||(!BTN_S3))
     		{
             screenState = CREATE_MAIN;
             AutooffSwitch = FALSE;
@@ -5079,7 +5071,7 @@ case DISPLAY_AllSet:
 }
 
 
-XCHAR SoftwareID[] = {'V',':',' ','1','1','2','1','3','1','1','0','8',0};
+XCHAR SoftwareID[] = {'V',':',' ','1','1','3','1','3','1','2','0','5',0};
 /*1.07 13.04.12*/
 // Shows intro screen and waits for touch
 void StartScreen(void){
@@ -5089,7 +5081,7 @@ XCHAR CoName[] = {0x002E, 0x002E, 0x002E, 0x0033, 0x00A0, 0x0020, 0x00B2, 0x00B0
 XCHAR Alcovisor[] ={'A','L','C','O','V','I','S','O','R',0x0000};
 XCHAR Model[] = {'P','R','O','-','1','0','0',' ','t','o','u','c','h','-','M',0};//"ALCOVISOR@";
 //XCHAR edition[] = {'1','2','0','3','7','0',0,0,0,0,0,0,0};
-XCHAR edition[] = {'R','U',0x0020,'V','1','.','1','2',0,0,0};//{0x43,0x4e,0x20,0x56,0x31,0x2e,0x30,0x30,0x00};//"CN V1.00"; //edition
+XCHAR edition[] = {'R','U',0x0020,'V','1','.','1','3',0,0,0};//{0x43,0x4e,0x20,0x56,0x31,0x2e,0x30,0x30,0x00};//"CN V1.00"; //edition
 XCHAR PeriodsText[] = {'P','l','e','a','s','e',' ','D','e','m','a','r','c','a','t','e',0};
 
 #ifdef Bluetooth
@@ -6400,7 +6392,7 @@ void    CreateAllSetting()
 {
     GOLFree();   // free memory for the objects in the previous linked list and start new list
 
-    CreatePage(SettingStr); // CreatePage("Setting");
+    CreatePage(AllSettingStr); // CreatePage("Setting");
     
     BtnCreate(ID_BUTTON1,               // button ID 
               MAINSTARTX+0*(MAINCHARSIZE+MAINSIZEX)-4-7,MAINSTARTY,
@@ -6408,7 +6400,7 @@ void    CreateAllSetting()
               0,                       	// set radius 
               BTN_DRAW,                 // draw a beveled button
               NULL,//(void*)&Picsetting,                        // no bitmap
-              SettingStr,//ButtonStr,               // "Button",     	// text
+              nSettingStr,//ButtonStr,               // "Button",     	// text
               mainScheme);                  // use alternate scheme
 
     BtnCreate(ID_BUTTON2,               // button ID 
@@ -6426,7 +6418,7 @@ void    CreateAllSetting()
               0,                       	// set radius 
               BTN_DRAW,                 // draw a vertical capsule button
               NULL,//(void*)&Pictime,//Picsetting,                      // no bitmap
-              SetDateTimeStr,//SettingStr,//OnStr,                  // "ON",		// text
+              TimeSttingStr,//SettingStr,//OnStr,                  // "ON",		// text
               mainScheme);             // use alternate scheme  
 
 }
@@ -8599,12 +8591,12 @@ else
     {
         StCreate(ID_STATICTEXT3,                // ID 
               positionax,positionay+5*positionmaxy,
-              positionax+3*positionmaxx+35,positionay+6*positionmaxy,               // dimension
+              positionax+3*positionmaxx+45,positionay+6*positionmaxy,               // dimension
               ST_DRAW,//|ST_RIGHT_ALIGN,//ST_CENTER_ALIGN,      // display text
               Item0Str,                 // "TEST", 	// text
               mainScheme);                   // use alternate scheme
     StCreate(ID_STATICTEXT3,                // ID 
-              positionax+3*positionmaxx+35,positionay+5*positionmaxy,
+              positionax+3*positionmaxx+45,positionay+5*positionmaxy,
               239,positionay+6*positionmaxy,                // dimension
               ST_DRAW,//|ST_RIGHT_ALIGN,//ST_CENTER_ALIGN,      // display text
          &Flashbuff[49],//NULL,//GetdataStr,// SubjectNameStr,              // "TEST", 	// text
@@ -8615,12 +8607,12 @@ if(EEPROMReadByte(ID_CHECKBOXADDRESS+1)==1)
     {
     StCreate(ID_STATICTEXT3,                // ID 
               positionax,positionay+6*positionmaxy,
-              positionax+3*positionmaxx+40,positionay+7*positionmaxy,               // dimension
+              positionax+3*positionmaxx+50,positionay+7*positionmaxy,               // dimension
               ST_DRAW,//|ST_RIGHT_ALIGN,//ST_CENTER_ALIGN,      // display text
               Item1Str,                 // "TEST", 	// text
               mainScheme);                   // use alternate scheme
 StCreate(ID_STATICTEXT3,                // ID 
-              positionax+3*positionmaxx+40,positionay+6*positionmaxy,
+              positionax+3*positionmaxx+50,positionay+6*positionmaxy,
               239,positionay+7*positionmaxy,                // dimension
               ST_DRAW,//|ST_RIGHT_ALIGN,//ST_CENTER_ALIGN,      // display text
               &Flashbuff[68],//NULL,//&GetdataStr[16],//WriteRecordStr,                 // "TEST", 	// text
@@ -8631,12 +8623,12 @@ StCreate(ID_STATICTEXT3,                // ID
     {
     StCreate(ID_STATICTEXT3,                // ID 
               positionax,positionay+7*positionmaxy,
-              positionax+3*positionmaxx+40,positionay+8*positionmaxy,               // dimension
+              positionax+3*positionmaxx+45,positionay+8*positionmaxy,               // dimension
               ST_DRAW,//|ST_RIGHT_ALIGN,//ST_CENTER_ALIGN,      // display text
               Item2Str,                 // "TEST", 	// text
               mainScheme);                   // use alternate scheme    
 StCreate(ID_STATICTEXT3,                // ID 
-              positionax+3*positionmaxx+40,positionay+7*positionmaxy,
+              positionax+3*positionmaxx+45,positionay+7*positionmaxy,
               239,positionay+8*positionmaxy,                // dimension
               ST_DRAW,//|ST_RIGHT_ALIGN,//ST_CENTER_ALIGN,      // display text
               &Flashbuff[87],//NULL,//&GetdataStr[32],//&WriteRecordStr[13],//GetdataStr,               // "TEST", 	// text
@@ -8647,12 +8639,12 @@ StCreate(ID_STATICTEXT3,                // ID
     {
     StCreate(ID_STATICTEXT3,                // ID 
               positionax,positionay+8*positionmaxy,
-              positionax+3*positionmaxx+40,positionay+9*positionmaxy,               // dimension
+              positionax+3*positionmaxx+45,positionay+9*positionmaxy,               // dimension
               ST_DRAW,//|ST_RIGHT_ALIGN,//ST_CENTER_ALIGN,      // display text
               Item3Str,                 // "TEST", 	// text
               mainScheme);                   // use alternate scheme    
 StCreate(ID_STATICTEXT3,                // ID 
-              positionax+3*positionmaxx+40,positionay+8*positionmaxy,
+              positionax+3*positionmaxx+45,positionay+8*positionmaxy,
               239,positionay+9*positionmaxy,                // dimension
               ST_DRAW,//|ST_RIGHT_ALIGN,//ST_CENTER_ALIGN,      // display text
               &Flashbuff[106],//NULL,//&GetdataStr[48],//GetdataStr,                // "TEST", 	// text
@@ -8662,12 +8654,12 @@ StCreate(ID_STATICTEXT3,                // ID
     	{
     StCreate(ID_STATICTEXT3,                // ID 
               positionax,positionay+9*positionmaxy,
-              positionax+3*positionmaxx+40,positionay+10*positionmaxy,              // dimension
+              positionax+3*positionmaxx+50,positionay+10*positionmaxy,              // dimension
               ST_DRAW,//|ST_RIGHT_ALIGN,//ST_CENTER_ALIGN,      // display text
               Item4Str,                 // "TEST", 	// text
               mainScheme);                   // use alternate scheme    
 StCreate(ID_STATICTEXT3,                // ID 
-              positionax+3*positionmaxx+40,positionay+9*positionmaxy,
+              positionax+3*positionmaxx+50,positionay+9*positionmaxy,
               239,positionay+10*positionmaxy,               // dimension
               ST_DRAW,//|ST_RIGHT_ALIGN,//ST_CENTER_ALIGN,      // display text
               &Flashbuff[125],//,//NULL,//&GetdataStr[64],//GetdataStr,                 // "TEST", 	// text
@@ -8677,12 +8669,12 @@ StCreate(ID_STATICTEXT3,                // ID
     {
     StCreate(ID_STATICTEXT3,                // ID 
               positionax,positionay+10*positionmaxy,
-              positionax+3*positionmaxx+40,positionay+11*positionmaxy,              // dimension
+              positionax+3*positionmaxx+45,positionay+11*positionmaxy,              // dimension
               ST_DRAW,//|ST_RIGHT_ALIGN,//ST_CENTER_ALIGN,      // display text
               Item5Str,                 // "TEST", 	// text
               mainScheme);                   // use alternate scheme    
 StCreate(ID_STATICTEXT3,                // ID 
-              positionax+3*positionmaxx+40,positionay+10*positionmaxy,
+              positionax+3*positionmaxx+45,positionay+10*positionmaxy,
               239,positionay+11*positionmaxy,               // dimension
               ST_DRAW,//|ST_RIGHT_ALIGN,//ST_CENTER_ALIGN,      // display text
               &Flashbuff[144],//NULL,//&GetdataStr[80],//GetdataStr,                // "TEST", 	// text
@@ -8692,12 +8684,12 @@ StCreate(ID_STATICTEXT3,                // ID
     {
     StCreate(ID_STATICTEXT3,                // ID 
               positionax,positionay+11*positionmaxy,
-              positionax+3*positionmaxx+40,positionay+12*positionmaxy,              // dimension
+              positionax+3*positionmaxx+45,positionay+12*positionmaxy,              // dimension
               ST_DRAW,//|ST_RIGHT_ALIGN,//ST_CENTER_ALIGN,      // display text
               Item6Str,                 // "TEST", 	// text
               mainScheme);                   // use alternate scheme    
 StCreate(ID_STATICTEXT3,                // ID 
-              positionax+3*positionmaxx+40,positionay+11*positionmaxy,
+              positionax+3*positionmaxx+45,positionay+11*positionmaxy,
               239,positionay+12*positionmaxy,               // dimension
               ST_DRAW,//|ST_RIGHT_ALIGN,//ST_CENTER_ALIGN,      // display text
               &Flashbuff[163],//NULL,//&GetdataStr[80],//GetdataStr,                // "TEST", 	// text
@@ -8707,12 +8699,12 @@ StCreate(ID_STATICTEXT3,                // ID
     {
     StCreate(ID_STATICTEXT3,                // ID 
               positionax,positionay+12*positionmaxy,
-              positionax+3*positionmaxx+40,positionay+13*positionmaxy,              // dimension
+              positionax+3*positionmaxx+50,positionay+13*positionmaxy,              // dimension
               ST_DRAW,//|ST_RIGHT_ALIGN,//ST_CENTER_ALIGN,      // display text
               Item7Str,                 // "TEST", 	// text
               mainScheme);                   // use alternate scheme    
 StCreate(ID_STATICTEXT3,                // ID 
-              positionax+3*positionmaxx+40,positionay+12*positionmaxy,
+              positionax+3*positionmaxx+50,positionay+12*positionmaxy,
               239,positionay+13*positionmaxy,               // dimension
               ST_DRAW,//|ST_RIGHT_ALIGN,//ST_CENTER_ALIGN,      // display text
               &Flashbuff[182],//NULL,//&GetdataStr[80],//GetdataStr,                // "TEST", 	// text
@@ -8722,12 +8714,12 @@ StCreate(ID_STATICTEXT3,                // ID
     {
     StCreate(ID_STATICTEXT3,                // ID 
               positionax,positionay+13*positionmaxy,
-              positionax+3*positionmaxx+40,positionay+14*positionmaxy,              // dimension
+              positionax+3*positionmaxx+45,positionay+14*positionmaxy,              // dimension
               ST_DRAW,//|ST_RIGHT_ALIGN,//ST_CENTER_ALIGN,      // display text
               Item8Str,                 // "TEST", 	// text
               mainScheme);                   // use alternate scheme    
 StCreate(ID_STATICTEXT3,                // ID 
-              positionax+3*positionmaxx+40,positionay+13*positionmaxy,
+              positionax+3*positionmaxx+45,positionay+13*positionmaxy,
               239,positionay+14*positionmaxy,               // dimension
               ST_DRAW,//|ST_RIGHT_ALIGN,//ST_CENTER_ALIGN,      // display text
               &Flashbuff[201],//NULL,//&GetdataStr[80],//GetdataStr,                // "TEST", 	// text
@@ -13854,13 +13846,31 @@ void SaveReadItem(BOOL SaveRead)
     {
         if(SaveRead)
            {
-//                  EEPROMWriteByte(Itempoint, ItemAddress);
-//                  Itempoint++;
+          
+			Item0Str[i] = 0;
+			
+			Item1Str[i] = 0;
+
+			Item2Str[i] = 0;
+
+			Item3Str[i] = 0;
+
+			Item4Str[i] = 0;
+
+			Item5Str[i] = 0;
+
+			Item6Str[i] = 0;
+
+			Item7Str[i] = 0;
+		
+			Item8Str[i] = 0;
+		
+			Item9Str[i] = 0;
+				
     	}
         else
     	{
-//          Itempoint=EEPROMReadByte(ItemAddress);
-//          Itempoint++;
+
             Item0Str[i]=EEPROMReadByte(Item0Address+i);
             Item1Str[i]=EEPROMReadByte(Item1Address+i);
             Item2Str[i]=EEPROMReadByte(Item2Address+i);
@@ -14660,7 +14670,7 @@ unsigned int KeyNumber=0;
                 default:
                     break;
                 }
-                SaveReadItem(FLASH);
+                SaveReadItem(FALSE);
                 for(temp = 0;temp<19;temp++)
               TempbuffStr[temp] = 0;
               for(;ItemAdd<10;ItemAdd++)//ItemMax ItemAdd =0
@@ -15194,10 +15204,11 @@ WORD MsgMaster(WORD objMsg, OBJ_HEADER* pObj){
 
         case ID_BUTTON5:
         
-            if(objMsg == BTN_MSG_PRESSED) {
+            if(objMsg == BTN_MSG_RELEASED) {
 
             	dif=1;
-                screenState = CREATE_ITEM;//				
+		  screenState = CREATE_FieldSet	;		
+               // screenState = CREATE_ITEM;//				
 
         		/*
                 Settingposition=0xbb;
@@ -15249,6 +15260,166 @@ WORD MsgMaster(WORD objMsg, OBJ_HEADER* pObj){
             return 1;                           // process by default
     }
 }
+
+
+void    CreateFieldSetting()
+{
+    GOLFree();   // free memory for the objects in the previous linked list and start new list
+
+    CreatePage(FieldsetStr); // CreatePage("Setting");
+    
+    BtnCreate(ID_BUTTON1,               // button ID 
+              MAINSTARTX+0*(MAINCHARSIZE+MAINSIZEX)-4-7,MAINSTARTY,
+              220,MAINSTARTY+1*MAINCHARSIZE,            // dimension
+              0,                       	// set radius 
+              BTN_DRAW,                 // draw a beveled button
+              NULL,//(void*)&Picsetting,                        // no bitmap
+              FieldsetStr1,//ButtonStr,               // "Button",     	// text
+              mainScheme);                  // use alternate scheme
+
+    BtnCreate(ID_BUTTON2,               // button ID 
+              MAINSTARTX+0*(MAINCHARSIZE+MAINSIZEX)-4-7,MAINSTARTY+1*MAINCHARSIZE+20,
+              220,MAINSTARTY+2*MAINCHARSIZE+20,             // dimension
+              0,
+              BTN_DRAW,                 // will be dislayed after creation 
+              NULL,//(void*)&set2,//          // use bitmap
+              FieldsetStr2,//HomeStr,                  // "HOME", 	    // text
+              mainScheme);              // alternative GOL scheme 	
+         
+    BtnCreate(ID_BUTTON3,               // button ID 
+              MAINSTARTX+0*(MAINCHARSIZE+MAINSIZEX)-4-7,MAINSTARTY+2*MAINCHARSIZE+40,
+              220,MAINSTARTY+3*MAINCHARSIZE+40,             // dimension
+              0,                       	// set radius 
+              BTN_DRAW,                 // draw a vertical capsule button
+              NULL,//(void*)&Pictime,//Picsetting,                      // no bitmap
+              FieldsetStr3,//SettingStr,//OnStr,                  // "ON",		// text
+              mainScheme);             // use alternate scheme  
+
+}
+WORD MsgFieldSetting(WORD objMsg, OBJ_HEADER* pObj){
+    OBJ_HEADER* pOtherRbtn;
+
+    switch(GetObjID(pObj)){
+
+        case ID_BUTTON_NEXT:
+            if(objMsg == BTN_MSG_RELEASED){
+               screenState = CREATE_Master;// goto check box demo screen
+            }
+            return 1;                           // process by default
+
+        case ID_BUTTON_BACK:
+            if(objMsg == BTN_MSG_RELEASED){
+                screenState = CREATE_Master;      // goto ECG demo screen
+            }
+            return 1;                           // process by default
+
+    case ID_BUTTON_HOME:
+            if(objMsg == BTN_MSG_RELEASED){
+                screenState = CREATE_MAIN;  // goto list box screen
+            }
+            return 1;
+
+
+
+        case ID_BUTTON1:
+            if(objMsg == BTN_MSG_RELEASED){
+
+			EEPROMWriteArray(Item0Address, DriverName, 32);
+			EEPROMWriteArray(Item1Address, PlaceStr, 32);
+			EEPROMWriteArray(Item2Address, VehicleNoStr, 32);
+			EEPROMWriteArray(Item3Address, BadgeNoStr, 32);
+			EEPROMWriteArray(Item4Address, OperatorNameStr, 32);
+			EEPROMWriteArray(Item5Address, DepartmentStr, 32);
+
+			
+			EEPROMWriteByte(1, ID_CHECKBOXADDRESS + ID_CHECKBOX10 );//
+			EEPROMWriteByte(0, ID_CHECKBOXADDRESS + ID_CHECKBOX20 );//
+
+			EEPROMWriteByte(1, ID_CHECKBOXADDRESS + ID_CHECKBOX11 );//
+			EEPROMWriteByte(1, ID_CHECKBOXADDRESS + ID_CHECKBOX21 );//
+
+			EEPROMWriteByte(1, ID_CHECKBOXADDRESS + ID_CHECKBOX12 );//
+			EEPROMWriteByte(0, ID_CHECKBOXADDRESS + ID_CHECKBOX22 );//
+
+			EEPROMWriteByte(1, ID_CHECKBOXADDRESS + ID_CHECKBOX13 );//
+			EEPROMWriteByte(1, ID_CHECKBOXADDRESS + ID_CHECKBOX23 );//
+
+			EEPROMWriteByte(1, ID_CHECKBOXADDRESS + ID_CHECKBOX14 );//
+			EEPROMWriteByte(1, ID_CHECKBOXADDRESS + ID_CHECKBOX24 );//
+
+			EEPROMWriteByte(1, ID_CHECKBOXADDRESS + ID_CHECKBOX15 );//
+			EEPROMWriteByte(1, ID_CHECKBOXADDRESS + ID_CHECKBOX25 );//
+			EEPROMWriteByte(0, ID_CHECKBOXADDRESS + ID_CHECKBOX16 );//
+			EEPROMWriteByte(0, ID_CHECKBOXADDRESS + ID_CHECKBOX26 );//
+			EEPROMWriteByte(0, ID_CHECKBOXADDRESS + ID_CHECKBOX17 );//
+			EEPROMWriteByte(0, ID_CHECKBOXADDRESS + ID_CHECKBOX27 );//
+			EEPROMWriteByte(0, ID_CHECKBOXADDRESS + ID_CHECKBOX18 );//
+			EEPROMWriteByte(0, ID_CHECKBOXADDRESS + ID_CHECKBOX28 );//
+			EEPROMWriteByte(0, ID_CHECKBOXADDRESS + ID_CHECKBOX19 );//
+			EEPROMWriteByte(0, ID_CHECKBOXADDRESS + ID_CHECKBOX29 );//
+                	screenState = CREATE_Master;  //				
+            }
+            return 1;                           // 
+
+
+
+        case ID_BUTTON2:
+        
+            if(objMsg == BTN_MSG_RELEASED) {
+				
+				EEPROMWriteArray(Item0Address, DefaultStr1, 32);
+				EEPROMWriteArray(Item1Address, DefaultStr2, 32);
+				EEPROMWriteArray(Item2Address, DefaultStr3, 32);
+				EEPROMWriteArray(Item3Address, DefaultStr4, 32);
+				EEPROMWriteArray(Item4Address, DefaultStr5, 32);
+				EEPROMWriteArray(Item5Address, DefaultStr6, 32);
+				
+				
+				EEPROMWriteByte(1, ID_CHECKBOXADDRESS + ID_CHECKBOX10 );//
+				EEPROMWriteByte(0, ID_CHECKBOXADDRESS + ID_CHECKBOX20 );//
+				
+				EEPROMWriteByte(1, ID_CHECKBOXADDRESS + ID_CHECKBOX11 );//
+				EEPROMWriteByte(1, ID_CHECKBOXADDRESS + ID_CHECKBOX21 );//
+				
+				EEPROMWriteByte(1, ID_CHECKBOXADDRESS + ID_CHECKBOX12 );//
+				EEPROMWriteByte(0, ID_CHECKBOXADDRESS + ID_CHECKBOX22 );//
+				
+				EEPROMWriteByte(1, ID_CHECKBOXADDRESS + ID_CHECKBOX13 );//
+				EEPROMWriteByte(1, ID_CHECKBOXADDRESS + ID_CHECKBOX23 );//
+				
+				EEPROMWriteByte(1, ID_CHECKBOXADDRESS + ID_CHECKBOX14 );//
+				EEPROMWriteByte(1, ID_CHECKBOXADDRESS + ID_CHECKBOX24 );//
+				
+				EEPROMWriteByte(1, ID_CHECKBOXADDRESS + ID_CHECKBOX15 );//
+				EEPROMWriteByte(1, ID_CHECKBOXADDRESS + ID_CHECKBOX25 );//
+				EEPROMWriteByte(0, ID_CHECKBOXADDRESS + ID_CHECKBOX16 );//
+				EEPROMWriteByte(0, ID_CHECKBOXADDRESS + ID_CHECKBOX26 );//
+				EEPROMWriteByte(0, ID_CHECKBOXADDRESS + ID_CHECKBOX17 );//
+				EEPROMWriteByte(0, ID_CHECKBOXADDRESS + ID_CHECKBOX27 );//
+				EEPROMWriteByte(0, ID_CHECKBOXADDRESS + ID_CHECKBOX18 );//
+				EEPROMWriteByte(0, ID_CHECKBOXADDRESS + ID_CHECKBOX28 );//
+				EEPROMWriteByte(0, ID_CHECKBOXADDRESS + ID_CHECKBOX19 );//
+				EEPROMWriteByte(0, ID_CHECKBOXADDRESS + ID_CHECKBOX29 );//
+
+				screenState = CREATE_Master;  //				
+    		}
+            return 1;                           // 
+
+        case ID_BUTTON3:
+        
+            if(objMsg == BTN_MSG_RELEASED) {
+            	  dif=1;
+                screenState = CREATE_ITEM;			
+    		}
+            return 1;                           // Do not process by default
+
+
+        default:
+            return 1;                           // process by default
+    }
+}
+
+
 void CreateSetpassword(void)
 {
 

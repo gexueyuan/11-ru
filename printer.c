@@ -2206,7 +2206,7 @@ void Inputdata(void)
           if(EEPROMReadByte(ID_CHECKBOXADDRESS + 28))
               Print_Table_Text_GPS();
 
-		  Print_Table_Text_temperature();
+		//  Print_Table_Text_temperature();
 
 			Print_Table_Text_SignatureCheck();
 

@@ -144,7 +144,7 @@ void BeepInit(){
 #define pump_reset       PORTGbits.RG1
 #define N  7
 #define ScreenMask 42
-#define TestMask   105//42//0.02    //15//0.007     //105//0.05   //42//0.02
+#define TestMask   126    //42//0.02    //15//0.007     //105//0.05  126//0.06   //42//0.02
 #define AlarmMask  200
 #define MostRange  6300
 //#define MarkDensity  800;

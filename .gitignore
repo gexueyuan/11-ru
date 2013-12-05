@@ -217,6 +217,11 @@ pip-log.txt
 *.o
 *.hex
 8003k/
+Rework/
+WAT89EC-11_RU-temp/
+change/
+bluetooth/
+font/
 *.rar
 *.jpg
 *.pdf

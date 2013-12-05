@@ -249,9 +249,9 @@ struct tagRecord_Flag
 
 //reserve in eeprom
 #define EESERIAL_NUMBER 0x0100   //
-//time zone
+//max
 #define Record_over_16000  0x0102
-#define Code_MAX   16000
+#define Code_MAX   10000
 #define Code_OVER  0xaaaa
 //#define TIME_ZONE	0x0102
 #define RX4_BUFFLEN 500	//500
