@@ -166,8 +166,8 @@
 *
 ********************************************************************/
 
-//#define ST7789S
-#define SPFD5408B
+#define ST7789S
+//#define SPFD5408B
 
 #ifdef  ST7789S
 	#include "ST7789S.H"

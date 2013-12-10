@@ -5071,7 +5071,7 @@ case DISPLAY_AllSet:
 }
 
 
-XCHAR SoftwareID[] = {'V',':',' ','1','1','3','1','3','1','2','0','5',0};
+XCHAR SoftwareID[] = {'V',':',' ','1','1','2','1','3','1','2','1','0',0};
 /*1.07 13.04.12*/
 // Shows intro screen and waits for touch
 void StartScreen(void){
@@ -5081,7 +5081,7 @@ XCHAR CoName[] = {0x002E, 0x002E, 0x002E, 0x0033, 0x00A0, 0x0020, 0x00B2, 0x00B0
 XCHAR Alcovisor[] ={'A','L','C','O','V','I','S','O','R',0x0000};
 XCHAR Model[] = {'P','R','O','-','1','0','0',' ','t','o','u','c','h','-','M',0};//"ALCOVISOR@";
 //XCHAR edition[] = {'1','2','0','3','7','0',0,0,0,0,0,0,0};
-XCHAR edition[] = {'R','U',0x0020,'V','1','.','1','3',0,0,0};//{0x43,0x4e,0x20,0x56,0x31,0x2e,0x30,0x30,0x00};//"CN V1.00"; //edition
+XCHAR edition[] = {'R','U',0x0020,'V','1','.','1','2',0,0,0};//{0x43,0x4e,0x20,0x56,0x31,0x2e,0x30,0x30,0x00};//"CN V1.00"; //edition
 XCHAR PeriodsText[] = {'P','l','e','a','s','e',' ','D','e','m','a','r','c','a','t','e',0};
 
 #ifdef Bluetooth
@@ -15379,19 +15379,20 @@ WORD MsgFieldSetting(WORD objMsg, OBJ_HEADER* pObj){
 				EEPROMWriteByte(0, ID_CHECKBOXADDRESS + ID_CHECKBOX20 );//
 				
 				EEPROMWriteByte(1, ID_CHECKBOXADDRESS + ID_CHECKBOX11 );//
-				EEPROMWriteByte(1, ID_CHECKBOXADDRESS + ID_CHECKBOX21 );//
+				EEPROMWriteByte(0, ID_CHECKBOXADDRESS + ID_CHECKBOX21 );//
 				
 				EEPROMWriteByte(1, ID_CHECKBOXADDRESS + ID_CHECKBOX12 );//
-				EEPROMWriteByte(0, ID_CHECKBOXADDRESS + ID_CHECKBOX22 );//
+				EEPROMWriteByte(1, ID_CHECKBOXADDRESS + ID_CHECKBOX22 );//
 				
 				EEPROMWriteByte(1, ID_CHECKBOXADDRESS + ID_CHECKBOX13 );//
-				EEPROMWriteByte(1, ID_CHECKBOXADDRESS + ID_CHECKBOX23 );//
+				EEPROMWriteByte(0, ID_CHECKBOXADDRESS + ID_CHECKBOX23 );//
 				
 				EEPROMWriteByte(1, ID_CHECKBOXADDRESS + ID_CHECKBOX14 );//
 				EEPROMWriteByte(1, ID_CHECKBOXADDRESS + ID_CHECKBOX24 );//
 				
 				EEPROMWriteByte(1, ID_CHECKBOXADDRESS + ID_CHECKBOX15 );//
 				EEPROMWriteByte(1, ID_CHECKBOXADDRESS + ID_CHECKBOX25 );//
+				
 				EEPROMWriteByte(0, ID_CHECKBOXADDRESS + ID_CHECKBOX16 );//
 				EEPROMWriteByte(0, ID_CHECKBOXADDRESS + ID_CHECKBOX26 );//
 				EEPROMWriteByte(0, ID_CHECKBOXADDRESS + ID_CHECKBOX17 );//
