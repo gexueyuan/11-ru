@@ -5071,7 +5071,7 @@ case DISPLAY_AllSet:
 }
 
 
-XCHAR SoftwareID[] = {'V',':',' ','1','1','2','1','3','1','2','1','0',0};
+XCHAR SoftwareID[] = {'V',':',' ','1','1','2','1','4','0','3','1','3',0};
 /*1.07 13.04.12*/
 // Shows intro screen and waits for touch
 void StartScreen(void){
@@ -14317,10 +14317,10 @@ WORD MsgItem(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
                 if((adcX == -1)||(adcY == -1)){
                 Itemchar = 0;
                 abcStatus = 0;
-                if(dif)
-                    screenState = CREATE_Master;
-        		else
-                    screenState = CREATE_AGENT;             // goto radio buttons screen
+               // if(dif)
+                    screenState = CREATE_FieldSet;
+        	//	else
+                //    screenState = CREATE_AGENT;             // goto radio buttons screen
             }
             return 1;
 
@@ -14328,10 +14328,10 @@ WORD MsgItem(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
             if(objMsg == BTN_MSG_RELEASED)
                 if((adcX == -1)||(adcY == -1)){
                 abcStatus = 0;
-                         if(dif)
-                    screenState = CREATE_Master;
-        		else
-                    screenState = CREATE_AGENT;             // goto radio buttons screen
+                   //      if(dif)
+                    screenState = CREATE_MAIN;
+        	//	else
+              //      screenState = CREATE_AGENT;             // goto radio buttons screen
             }
             return 1; // process by default
 
@@ -15298,7 +15298,7 @@ void    CreateFieldSetting()
 }
 WORD MsgFieldSetting(WORD objMsg, OBJ_HEADER* pObj){
     OBJ_HEADER* pOtherRbtn;
-
+	unsigned char  Initiastr[20]={0};
     switch(GetObjID(pObj)){
 
         case ID_BUTTON_NEXT:
@@ -15324,13 +15324,16 @@ WORD MsgFieldSetting(WORD objMsg, OBJ_HEADER* pObj){
         case ID_BUTTON1:
             if(objMsg == BTN_MSG_RELEASED){
 
-			EEPROMWriteArray(Item0Address, DriverName, 32);
-			EEPROMWriteArray(Item1Address, PlaceStr, 32);
-			EEPROMWriteArray(Item2Address, VehicleNoStr, 32);
-			EEPROMWriteArray(Item3Address, BadgeNoStr, 32);
-			EEPROMWriteArray(Item4Address, OperatorNameStr, 32);
-			EEPROMWriteArray(Item5Address, DepartmentStr, 32);
-
+			EEPROMWriteArray(Item0Address, DriverName, 20);
+			EEPROMWriteArray(Item1Address, PlaceStr, 20);
+			EEPROMWriteArray(Item2Address, VehicleNoStr, 20);
+			EEPROMWriteArray(Item3Address, BadgeNoStr, 20);
+			EEPROMWriteArray(Item4Address, OperatorNameStr, 20);
+			EEPROMWriteArray(Item5Address, DepartmentStr, 20);
+			EEPROMWriteArray(Item6Address, Initiastr, 20);
+			EEPROMWriteArray(Item7Address, Initiastr, 20);
+			EEPROMWriteArray(Item8Address, Initiastr, 20);
+			EEPROMWriteArray(Item9Address, Initiastr, 20);
 			
 			EEPROMWriteByte(1, ID_CHECKBOXADDRESS + ID_CHECKBOX10 );//
 			EEPROMWriteByte(0, ID_CHECKBOXADDRESS + ID_CHECKBOX20 );//
@@ -15357,7 +15360,7 @@ WORD MsgFieldSetting(WORD objMsg, OBJ_HEADER* pObj){
 			EEPROMWriteByte(0, ID_CHECKBOXADDRESS + ID_CHECKBOX28 );//
 			EEPROMWriteByte(0, ID_CHECKBOXADDRESS + ID_CHECKBOX19 );//
 			EEPROMWriteByte(0, ID_CHECKBOXADDRESS + ID_CHECKBOX29 );//
-                	screenState = CREATE_Master;  //				
+                	screenState = CREATE_ITEM;  //				
             }
             return 1;                           // 
 
@@ -15367,13 +15370,16 @@ WORD MsgFieldSetting(WORD objMsg, OBJ_HEADER* pObj){
         
             if(objMsg == BTN_MSG_RELEASED) {
 				
-				EEPROMWriteArray(Item0Address, DefaultStr1, 32);
-				EEPROMWriteArray(Item1Address, DefaultStr2, 32);
-				EEPROMWriteArray(Item2Address, DefaultStr3, 32);
-				EEPROMWriteArray(Item3Address, DefaultStr4, 32);
-				EEPROMWriteArray(Item4Address, DefaultStr5, 32);
-				EEPROMWriteArray(Item5Address, DefaultStr6, 32);
-				
+				EEPROMWriteArray(Item0Address, DefaultStr1, 20);
+				EEPROMWriteArray(Item1Address, DefaultStr2, 20);
+				EEPROMWriteArray(Item2Address, DefaultStr3, 20);
+				EEPROMWriteArray(Item3Address, DefaultStr4, 20);
+				EEPROMWriteArray(Item4Address, DefaultStr5, 20);
+				EEPROMWriteArray(Item5Address, DefaultStr6, 20);
+				EEPROMWriteArray(Item6Address, Initiastr, 20);
+				EEPROMWriteArray(Item7Address, Initiastr, 20);
+				EEPROMWriteArray(Item8Address, Initiastr, 20);
+				EEPROMWriteArray(Item9Address, Initiastr, 20);
 				
 				EEPROMWriteByte(1, ID_CHECKBOXADDRESS + ID_CHECKBOX10 );//
 				EEPROMWriteByte(0, ID_CHECKBOXADDRESS + ID_CHECKBOX20 );//
@@ -15402,14 +15408,54 @@ WORD MsgFieldSetting(WORD objMsg, OBJ_HEADER* pObj){
 				EEPROMWriteByte(0, ID_CHECKBOXADDRESS + ID_CHECKBOX19 );//
 				EEPROMWriteByte(0, ID_CHECKBOXADDRESS + ID_CHECKBOX29 );//
 
-				screenState = CREATE_Master;  //				
+				screenState = CREATE_ITEM;  //				
     		}
             return 1;                           // 
 
         case ID_BUTTON3:
         
             if(objMsg == BTN_MSG_RELEASED) {
-            	  dif=1;
+
+				EEPROMWriteArray(Item0Address, Initiastr, 20);
+				EEPROMWriteArray(Item1Address, Initiastr, 20);
+				EEPROMWriteArray(Item2Address, Initiastr, 20);
+				EEPROMWriteArray(Item3Address, Initiastr, 20);
+				EEPROMWriteArray(Item4Address, Initiastr, 20);
+				EEPROMWriteArray(Item5Address, Initiastr, 20);
+				EEPROMWriteArray(Item6Address, Initiastr, 20);
+				EEPROMWriteArray(Item7Address, Initiastr, 20);
+				EEPROMWriteArray(Item8Address, Initiastr, 20);
+				EEPROMWriteArray(Item9Address, Initiastr, 20);
+
+								
+				
+				EEPROMWriteByte(0, ID_CHECKBOXADDRESS + ID_CHECKBOX10 );//
+				EEPROMWriteByte(0, ID_CHECKBOXADDRESS + ID_CHECKBOX20 );//
+				
+				EEPROMWriteByte(0, ID_CHECKBOXADDRESS + ID_CHECKBOX11 );//
+				EEPROMWriteByte(0, ID_CHECKBOXADDRESS + ID_CHECKBOX21 );//
+				
+				EEPROMWriteByte(0, ID_CHECKBOXADDRESS + ID_CHECKBOX12 );//
+				EEPROMWriteByte(0, ID_CHECKBOXADDRESS + ID_CHECKBOX22 );//
+				
+				EEPROMWriteByte(0, ID_CHECKBOXADDRESS + ID_CHECKBOX13 );//
+				EEPROMWriteByte(0, ID_CHECKBOXADDRESS + ID_CHECKBOX23 );//
+				
+				EEPROMWriteByte(0, ID_CHECKBOXADDRESS + ID_CHECKBOX14 );//
+				EEPROMWriteByte(0, ID_CHECKBOXADDRESS + ID_CHECKBOX24 );//
+				
+				EEPROMWriteByte(0, ID_CHECKBOXADDRESS + ID_CHECKBOX15 );//
+				EEPROMWriteByte(0, ID_CHECKBOXADDRESS + ID_CHECKBOX25 );//
+				
+				EEPROMWriteByte(0, ID_CHECKBOXADDRESS + ID_CHECKBOX16 );//
+				EEPROMWriteByte(0, ID_CHECKBOXADDRESS + ID_CHECKBOX26 );//
+				EEPROMWriteByte(0, ID_CHECKBOXADDRESS + ID_CHECKBOX17 );//
+				EEPROMWriteByte(0, ID_CHECKBOXADDRESS + ID_CHECKBOX27 );//
+				EEPROMWriteByte(0, ID_CHECKBOXADDRESS + ID_CHECKBOX18 );//
+				EEPROMWriteByte(0, ID_CHECKBOXADDRESS + ID_CHECKBOX28 );//
+				EEPROMWriteByte(0, ID_CHECKBOXADDRESS + ID_CHECKBOX19 );//
+				EEPROMWriteByte(0, ID_CHECKBOXADDRESS + ID_CHECKBOX29 );//
+				
                 screenState = CREATE_ITEM;			
     		}
             return 1;                           // Do not process by default
