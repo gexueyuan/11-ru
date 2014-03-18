@@ -1138,7 +1138,7 @@ EEPROMWriteWord(peak_compare_time,DebugADDRESS+5);
    pump_on =0;		
    pump_reset = 1;
    DISICNT = 0x0000;
-   delayms(1000);
+   delayms(2500);
    pump_on =0;		
    pump_reset = 0;
   // pump_pwr=0;
@@ -1171,7 +1171,7 @@ EEPROMWriteWord(peak_compare_time,DebugADDRESS+5);
 		prepare_and_Charge();
        pump_on =1;		//breath_sample_start
        pump_reset = 0;
-	   delayms(1000);
+	   delayms(2500);
        pump_on =0;		
        pump_reset = 0;
 		//sum >>= 1;	//added--chen090604

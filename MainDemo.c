@@ -2113,7 +2113,7 @@ if(0x33!=EEPROMReadByte(updateVision))
     prepare_and_Charge();// PORTAbits.RA6 = 1;
     pump_reset=0;
     pump_on=1;
-    delayms(1000);
+    delayms(2500);
     pump_reset=0;
     pump_on=0;
 
