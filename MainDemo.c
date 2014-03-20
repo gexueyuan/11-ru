@@ -447,7 +447,6 @@ WORD MsgEditMarkValue(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg);
 WORD MsgEditID(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg);
 void CreateDisplayMachineID(void);
 WORD MsgDisplayMachineID(WORD objMsg, OBJ_HEADER* pObj);
-void TestReady(void);
 void  CreateBlowPlease();
 WORD MsgBlowPlease(WORD objMsg, OBJ_HEADER* pObj);
 
@@ -5071,7 +5070,7 @@ case DISPLAY_AllSet:
 }
 
 
-XCHAR SoftwareID[] = {'V',':',' ','1','1','2','1','4','0','3','1','3',0};
+XCHAR SoftwareID[] = {'V',':',' ','1','1','2','1','4','0','3','1','8',0};
 /*1.07 13.04.12*/
 // Shows intro screen and waits for touch
 void StartScreen(void){
@@ -10122,18 +10121,6 @@ unsigned int  INPUTtem=0,INPUTAD=0;
 
 
 }
-void TestReady(void)
-{
-    GOLFree();   // free memory for the objects in the previous linked list and start new list
-    CreatePage(TestReadyStr);
-    StCreate(ID_STATICTEXT3,                // ID 
-              MAINSTARTX+0*(MAINCHARSIZE+MAINSIZEX),MAINSTARTY+2*MAINCHARSIZE+MAINSIZEY,
-              MAINSTARTX+3*(MAINCHARSIZE+MAINSIZEX),MAINSTARTY+2*(MAINCHARSIZE+MAINSIZEY),                  // dimension
-              ST_DRAW|ST_CENTER_ALIGN,      // display text
-              TestReadyStr,                 // "GPS", 	// text
-              altScheme);    // alt2Scheme              // use alternate scheme
-
-}
 
 WORD MsgEditID(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 
@@ -13871,16 +13858,16 @@ void SaveReadItem(BOOL SaveRead)
         else
     	{
 
-            Item0Str[i]=EEPROMReadByte(Item0Address+i);
-            Item1Str[i]=EEPROMReadByte(Item1Address+i);
-            Item2Str[i]=EEPROMReadByte(Item2Address+i);
-            Item3Str[i]=EEPROMReadByte(Item3Address+i);
-            Item4Str[i]=EEPROMReadByte(Item4Address+i);
-            Item5Str[i]=EEPROMReadByte(Item5Address+i);
-            Item6Str[i]=EEPROMReadByte(Item6Address+i);
-            Item7Str[i]=EEPROMReadByte(Item7Address+i);
-            Item8Str[i]=EEPROMReadByte(Item8Address+i);
-            Item9Str[i]=EEPROMReadByte(Item9Address+i);
+            Item0Str[i]=(XCHAR)EEPROMReadByte(Item0Address+i);
+            Item1Str[i]=(XCHAR)EEPROMReadByte(Item1Address+i);
+            Item2Str[i]=(XCHAR)EEPROMReadByte(Item2Address+i);
+            Item3Str[i]=(XCHAR)EEPROMReadByte(Item3Address+i);
+            Item4Str[i]=(XCHAR)EEPROMReadByte(Item4Address+i);
+            Item5Str[i]=(XCHAR)EEPROMReadByte(Item5Address+i);
+            Item6Str[i]=(XCHAR)EEPROMReadByte(Item6Address+i);
+            Item7Str[i]=(XCHAR)EEPROMReadByte(Item7Address+i);
+            Item8Str[i]=(XCHAR)EEPROMReadByte(Item8Address+i);
+            Item9Str[i]=(XCHAR)EEPROMReadByte(Item9Address+i);
     	}
     }
 
